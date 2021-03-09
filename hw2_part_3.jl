@@ -6,7 +6,7 @@ function cournot_newton(eta, c1, c2, guess, tolerance) # note that guess is a 1*
 
     diff = 1e3
     while diff > tolerance #here diff is the distance matrix
-        println("Now the guess for q is $guess.")
+        println("Now the guess for q1 is $(guess[1]), the guess for q2 is $(guess[2]).")
         f1 = guess -> ForwardDiff.gradient(profit_1,guess) # calculate FOC w.r.t q1
         f2 = guess -> ForwardDiff.gradient(profit_2,guess) # calculate FOC w.r.t q2
         f1_prime = guess -> ForwardDiff.hessian(profit_1,guess) # calculate SOC w.r.t q1
@@ -16,5 +16,5 @@ function cournot_newton(eta, c1, c2, guess, tolerance) # note that guess is a 1*
         diff = sqrt((guess[1]-new_guess_q1)^2 + (guess[2]-new_guess_q2)^2) # eclidean distance from old guess
         guess = [new_guess_q1 new_guess_q2] # form new guess
     end
-    println("The optimal quantity is $guess")
+    println("The optimal quantity for firm 1 is $(guess[1]), for firm 2 is $(guess[2])")
 end
