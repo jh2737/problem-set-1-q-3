@@ -10,7 +10,7 @@ function cournot_newton(eta, c1, c2, guess, tolerance) # note that guess is a 1*
         f1 = guess -> ForwardDiff.gradient(profit_1,guess) #calculate FOC w.r.t q1
         f2 = guess -> ForwardDiff.gradient(profit_2,guess) #calculate FOC w.r.t q2
         f1_prime = guess -> ForwardDiff.hessian(profit_1,guess) #calculate SOC w.r.t q1
-        f2_prime = guess -> ForwardDiff.hessian(profit_2,guess) #calculate SOC w.r.t q1
+        f2_prime = guess -> ForwardDiff.hessian(profit_2,guess) #calculate SOC w.r.t q2
         new_guess_q1 = guess[1] - f1(guess)[1] / f1_prime(guess)[1,1]
         new_guess_q2 = guess[2] - f2(guess)[2] / f2_prime(guess)[2,2]
         diff = sqrt((guess[1]-new_guess_q1)^2 + (guess[2]-new_guess_q2)^2)
