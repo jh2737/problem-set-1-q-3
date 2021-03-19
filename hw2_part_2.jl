@@ -28,7 +28,7 @@ end
 # Step 4 time both functions
 @time exp_cols(x)
 @time exp_rows(x)
-# exp_rows runs faster than exp_cols
+# exp_cols runs faster than exp_rows
 
 # Step 5 compare with exponentiating the full Array
 function exp_full(x)
